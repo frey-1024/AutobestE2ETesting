@@ -1,0 +1,19 @@
+{
+  "name": "autobeste2etesting",
+  "version": "1.0.0",
+  "description": "e2e test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangKunUserGit/AutobestE2ETesting.git"
+  },
+  "author": "Frey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangKunUserGit/AutobestE2ETesting/issues"
+  },
+  "homepage": "https://github.com/zhangKunUserGit/AutobestE2ETesting#readme"
+}
