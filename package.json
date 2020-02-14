@@ -1,11 +1,8 @@
 {
-  "name": "autobeste2etesting",
+  "name": "autobest-e2e-testing",
   "version": "1.0.0",
   "description": "e2e test",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhangKunUserGit/AutobestE2ETesting.git"
@@ -15,5 +12,112 @@
   "bugs": {
     "url": "https://github.com/zhangKunUserGit/AutobestE2ETesting/issues"
   },
-  "homepage": "https://github.com/zhangKunUserGit/AutobestE2ETesting#readme"
+  "homepage": "https://github.com/zhangKunUserGit/AutobestE2ETesting#readme",
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts"
+    ],
+    "setupFiles": [
+      "react-app-polyfill/jsdom"
+    ],
+    "setupFilesAfterEnv": [
+      "jest-allure/dist/setup"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "testEnvironment": "jest-environment-jsdom-fourteen",
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "modulePaths": [],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web",
+      "^.+\\.module\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
+    },
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "web.ts",
+      "ts",
+      "web.tsx",
+      "tsx",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node"
+    ],
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ]
+  },
+  "babel": {
+    "plugins": [
+      "@loadable/babel-plugin",
+      "@babel/plugin-transform-object-assign",
+      "@babel/plugin-transform-shorthand-properties"
+    ]
+  },
+  "scripts": {
+    "test:fpp": "jest --config config/fpp.js",
+    "report": "allure generate --clean",
+    "test": "npm run removeReport && npm run test:fpp",
+    "openReport": "npm run report && open-cli http://localhost:63342/AutobestWWWFrontend/allure-report/index.html",
+    "removeReport": "rimraf allure-results"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "1.6.0",
+    "@typescript-eslint/parser": "1.6.0",
+    "babel-eslint": "10.0.1",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "8.0.5",
+    "cross-env": "^5.2.0",
+    "open-cli": "^5.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-react-app": "^4.0.1",
+    "eslint-loader": "2.1.2",
+    "eslint-plugin-flowtype": "2.50.1",
+    "eslint-plugin-jsx-a11y": "6.2.1",
+    "eslint-plugin-react-hooks": "^1.5.0",
+    "jest-environment-jsdom-fourteen": "0.1.0",
+    "jest-resolve": "24.7.1",
+    "jest-watch-typeahead": "0.3.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-object-assign": "^7.2.0",
+    "@babel/plugin-transform-shorthand-properties": "^7.2.0",
+    "@loadable/babel-plugin": "^5.10.0",
+    "@loadable/webpack-plugin": "^5.7.1",
+    "core-js": "^3.2.0",
+    "webpack-merge": "^4.2.1",
+    "ejs-compiled-loader": "^1.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-standard": "^4.0.0",
+    "isomorphic-style-loader": "^5.1.0",
+    "jest": "^24.7.1",
+    "jest-allure": "^0.1.1",
+    "jest-allure-reporter": "^1.2.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "1.18.2",
+    "puppeteer": "^2.1.1",
+    "rimraf": "^2.6.3"
+  }
 }
